@@ -1,0 +1,21 @@
+MILESTONE 1:
+- Creare un interfaccia basic statica
+- Suddividere il progetto in Macro Componenti facilmente individuabili (es: Header-Main-Jumbotron-CardList-Card)
+
+MILESTONE 2:
+- Gestire lo storage generale dei dati (per capire come distribuirli al singolo componente e a chi)
+- Testare/Studiare l'API (prima di creare le props) e verificare quali dati prendere per ogni card, o quante ne appariranno a schermo
+
+MILESTONE 3:
+- Creare la card effettiva con le props e relativi &emit fronte e retro
+
+MILESTONE 4:
+- Creare la Search Bar e renderla funzionante
+
+MILESTONE 5: (Optional 1)
+- Migliorare l'interfaccia grafica aggiungendo una schermata con delle Card di Default iniziale e/o creare un Jumbotron
+
+- Dividere le section delle Card (magari come il Vero Netflix)
+
+MILESTONE 6: (Optional 2)
+- Migliorie grafiche varie (es: animazioni)
