@@ -24,7 +24,6 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
-                                <div class="yellow-box"></div>
                             </div>
                             <div :class="'mt-1 fs-5 position-relative fi fi-' + movie.original_language">
                                 <img class="unknown-flag" src="/img/pride_flag.png" alt="">
