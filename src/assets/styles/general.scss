@@ -4,3 +4,9 @@ $fa-font-path: "./webfonts";
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
 @import "bootstrap/scss/bootstrap";
+
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #141414;
+  color: white;
+}
