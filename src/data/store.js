@@ -9,7 +9,7 @@ export const store = reactive({
     },
     search: {
         api_key: "7948531c07887b40a0cbd32cc3e7ea77",
-        query: "a"
+        query: "Test"
     },
     loading: false,
     allMovies: []

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-between align-items-center py-3">
                 <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start  align-items-center mb-3 mb-sm-0">
-                    <h1 class="m-0">Netflix</h1>
+                    <h1 class="m-0">Boolflix</h1>
                     <ul class="list-unstyled d-flex gap-3 align-items-center just ms-4 my-0">
                         <li>
                             Home
@@ -20,8 +20,8 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
-                    <input type="text" name="searchBar" id="searchBar">
-                    <button>Search</button>
+                    <input v-model="store.search.query" @keyup.enter="$emit('onGetMovies')" type="text" name="searchBar" id="searchBar" placeholder="Film e Serie Tv">
+                    <button @click="$emit('onGetMovies')">Search</button>
                 </div>
             </div>
         </div>
@@ -29,11 +29,18 @@
 </template>
 
 <script>
+    import { store } from "../data/store";
     export default {
         name: "HeaderNav",
         props: {
             isScrolled: Boolean
-        }
+        },
+        data() {
+            return {
+            store,
+            scrolled: false
+            }
+        },
         
     }
 </script>

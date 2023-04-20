@@ -1,5 +1,5 @@
 <template>
-  <HeaderNav :isScrolled="scrolled"/>
+  <HeaderNav @onGetMovies="getMovieList" :isScrolled="scrolled"/>
   <main>
     <CardList />
   </main>
@@ -42,6 +42,7 @@
       },
 
       getMovieList() {
+        store.loading = true
         let url = store.baseSearchUrl + store.endpointSearchUrl.movies
         let options = {};
         let params = {};
