@@ -53,9 +53,11 @@
         right: 0px;
         position: absolute;
         background: transparent;
+        z-index: 1000;
     }
 
     .make-fixed {
+        z-index: 1000;
         position: fixed !important;
         width: 100%;
         background: rgb(20, 20, 20) !important;
