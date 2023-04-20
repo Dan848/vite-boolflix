@@ -1,7 +1,7 @@
 <template>
   <HeaderNav :isScrolled="scrolled"/>
   <main>
-
+    <CardList />
   </main>
 
 </template>
@@ -10,12 +10,14 @@
   import { store } from "./data/store.js";
   import axios from 'axios';
   import HeaderNav from './components/HeaderNav.vue';
-import { createApp } from "vue";
+  import CardList from "./components/CardList.vue";
+  import { createApp } from "vue";
 
   export default {
     name: "App.vue",
     components: {
-    HeaderNav
+    HeaderNav,
+    CardList
     },
     data() {
       return {

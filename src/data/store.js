@@ -2,7 +2,7 @@ import { reactive } from "vue";
 
 export const store = reactive({
     baseSearchUrl: "https://api.themoviedb.org/3/search/",
-    baseImgUrl: "https://image.tmdb.org/t/p/w",
+    baseImgUrl: "https://image.tmdb.org/t/p/w500",
     endpointSearchUrl: {
         movies: "movie?",
         tv: "tv?"
