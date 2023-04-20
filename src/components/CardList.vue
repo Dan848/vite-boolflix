@@ -1,21 +1,34 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div v-if="!store.loading" class="row">
             <div class="col d-flex justify-content-center" v-for="movie in store.allMovies" :key="movie.id">
                 <div class="position-relative">
+                    <!-- IMAGE -->
                     <img v-if="movie.backdrop_path" :src="store.baseImgUrl + movie.backdrop_path" alt="">
+                    <!-- IMAGE NULL -->
                     <img v-else src="/img/img_not_found.jpg" alt="">
+                    <!-- INFO BOX -->
                     <div class="info-box d-flex justify-content-between p-2">
+                        <!-- TITLE -->
                         <div class="h-100 d-flex flex-column justify-content-between">
                             <div>{{ movie.title }}</div>
                             <div class="small">Titolo Originale
                                 <div>{{ movie.original_title }}</div>
                             </div>
-                            
                         </div>
-                        <div class="h-100 d-flex flex-column justify-content-center"> 
-                            <div>{{ movie.vote_average }}</div>
-                            <div>{{ movie.original_language }}</div>
+                        <!-- RATING & FLAG -->
+                        <div class="h-100 d-flex flex-column justify-content-center align-items-end"> 
+                            <div class="mb-1 text-nowrap rating-box" :style="{backgroundImage: calcRating(movie.vote_average)}">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <div class="yellow-box"></div>
+                            </div>
+                            <div :class="'mt-1 fs-5 position-relative fi fi-' + movie.original_language">
+                                <img class="unknown-flag" src="/img/pride_flag.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -31,9 +44,25 @@
         name: "CardList",
         data() {
             return {
-            store
+            store,
+            starVote: 0
             }
         },
+        computed: {
+
+        },
+        methods: {
+            calcRating(vote) {
+                const yellowPercent = vote * 10;
+                const whitePercent = 100 - (vote * 10);
+                if (vote){
+                return `linear-gradient(to right, yellow ${yellowPercent}%, red ${whitePercent}% 100%)`;
+                }
+                else {
+                    return `linear-gradient(to right, red ${yellowPercent}%, red ${whitePercent}% 100%)`;
+                }
+            }
+        }
     }
 </script>
 
@@ -62,6 +91,21 @@
             font-size: 0.7rem;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
+            .rating-box{
+                position: relative;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
+            .unknown-flag{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 26px;
+                height: 20px;
+                z-index: -1;
+            }
         }
     }
 

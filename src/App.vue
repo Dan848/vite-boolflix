@@ -42,8 +42,8 @@
       },
 
       getMovieList() {
-        store.loading = true
-        let url = store.baseSearchUrl + store.endpointSearchUrl.movies
+        store.loading = true;
+        let url = store.baseSearchUrl + store.endpointSearchUrl.movies;
         let options = {};
         let params = {};
         //Populate the search object
@@ -59,10 +59,34 @@
 
         //Movie Showed
         axios.get(url, options).then((res) => {
-          console.log(res.data.results)
-          store.allMovies = res.data.results;
+          store.allMovies = res.data.results.map((item) => {
+            if (item.original_language === "en") {
+              return {
+                ...item,
+                original_language: "gb"
+              };
+            } else if (item.original_language === "ja") {
+              return {
+                ...item,
+                original_language: "jp"
+              };
+            } else if (item.original_language === "cs") {
+              return {
+                ...item,
+                original_language: "cz"
+              };
+            } else if (item.original_language === "zh") {
+              return {
+                ...item,
+                original_language: "cn"
+              };
+            } else {
+              return item;
+            }
+          });
           console.log(store.allMovies)
         })
+        store.loading = false;
       }
     }
   }
