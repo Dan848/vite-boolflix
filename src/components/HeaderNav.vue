@@ -53,6 +53,7 @@
         right: 0px;
         position: absolute;
         background: transparent;
+        transition: background-color 0.5s ease, position 0.5s ease;
         z-index: 1000;
     }
 
@@ -60,7 +61,9 @@
         z-index: 1000;
         position: fixed !important;
         width: 100%;
-        background: rgb(20, 20, 20) !important;
+        background: rgba(20, 20, 20, 0.5) !important;
+        transition: background-color 0.5s ease, position 0.5s ease;
+
     }
 
     h1 {

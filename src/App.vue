@@ -1,6 +1,7 @@
 <template>
   <HeaderNav @onGetMovies="getMovieList" :isScrolled="scrolled"/>
-  <main>
+  <JumbotronUnit />
+  <main class="px-5">
     <CardList />
   </main>
 
@@ -10,6 +11,7 @@
   import { store } from "./data/store.js";
   import axios from 'axios';
   import HeaderNav from './components/HeaderNav.vue';
+  import JumbotronUnit from "./components/JumbotronUnit.vue";
   import CardList from "./components/CardList.vue";
   import { createApp } from "vue";
 
@@ -17,6 +19,7 @@
     name: "App.vue",
     components: {
     HeaderNav,
+    JumbotronUnit,
     CardList
     },
     data() {
@@ -60,42 +63,26 @@
         //Movie Showed
         axios.get(url, options).then((res) => {
           store.allMovies = res.data.results.map((item) => {
-            if (item.original_language === "en") {
-              return {
-                ...item,
-                original_language: "gb"
-              };
-            } else if (item.original_language === "ja") {
-              return {
-                ...item,
-                original_language: "jp"
-              };
-            } else if (item.original_language === "cs") {
-              return {
-                ...item,
-                original_language: "cz"
-              };
-            } else if (item.original_language === "zh") {
-              return {
-                ...item,
-                original_language: "cn"
-              };
-            } else {
-              return item;
-            }
+            const langMap = {en: 'gb', ja: 'jp', cs: 'cz', zh: 'cn'};
+            return {
+              ...item, original_language: langMap[item.original_language] || item.original_language
+            };
           });
-          console.log(store.allMovies)
+          console.log(store.allMovies);
         })
-        store.loading = false;
+          .finally(() => {
+          store.loading = false;
+          });
       }
     }
-  }
+  }  
 </script>
 
 <style lang="scss" scoped>
 
   main {
     margin-top: 5rem;
+    margin-bottom: 100px;
   }
 
 </style>

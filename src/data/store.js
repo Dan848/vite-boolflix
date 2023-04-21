@@ -12,5 +12,8 @@ export const store = reactive({
         query: "Test"
     },
     loading: false,
-    allMovies: []
+    allMovies: [],
+    jumbotronEndUrl: "/zZiflZpuaZerugtfdyXcg6dcylD.jpg",
+    jumbotronBaseUrl: "https://image.tmdb.org/t/p/original"
+
 })
