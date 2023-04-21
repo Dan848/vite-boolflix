@@ -1,10 +1,11 @@
 <template>
-  <HeaderNav @onGetMovies="getMovieList" :isScrolled="scrolled"/>
-  <JumbotronUnit />
-  <main class="px-5">
-    <CardList />
+  <HeaderNav @onGetSearch="getAllList" :isScrolled="scrolled"/>
+  <main>
+    <JumbotronUnit />
+    <div class="px-5 wrapper">
+      <CardList />
+    </div>
   </main>
-
 </template>
 
 <script>
@@ -22,15 +23,15 @@
     JumbotronUnit,
     CardList
     },
+
     data() {
       return {
         store,
         scrolled: false
       }
     },
-
     mounted() {
-      this.getMovieList();
+      this.getAllList();
       window.addEventListener('scroll', this.handleScroll)
     },
     destroyed() {
@@ -44,9 +45,9 @@
         this.scrolled = isScrolled
       },
 
-      getMovieList() {
+      getEndpointList(endp) {
         store.loading = true;
-        let url = store.baseSearchUrl + store.endpointSearchUrl.movies;
+        let url = store.baseSearchUrl + store[endp].endpoint
         let options = {};
         let params = {};
         //Populate the search object
@@ -62,25 +63,29 @@
 
         //Movie Showed
         axios.get(url, options).then((res) => {
-          store.allMovies = res.data.results.map((item) => {
+          store[endp].items = res.data.results.map((item) => {
             const langMap = {en: 'gb', ja: 'jp', cs: 'cz', zh: 'cn'};
             return {
               ...item, original_language: langMap[item.original_language] || item.original_language
             };
           });
-          console.log(store.allMovies);
+          console.log(store[endp].items);
         })
           .finally(() => {
           store.loading = false;
           });
-      }
+      },
+      getAllList(){
+        this.getEndpointList("movies");
+        this.getEndpointList("tv");
+      },
     }
   }  
 </script>
 
 <style lang="scss" scoped>
 
-  main {
+  .wrapper {
     margin-top: 5rem;
     margin-bottom: 100px;
   }

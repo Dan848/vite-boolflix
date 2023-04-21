@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-md-6  d-flex justify-content-center">
-        <div class="position-relative" :id="id">
+        <div @click="$emit('onChangeJumbotron', coverEndUrl)" class="position-relative card-box" :id="id">
             <!-- IMAGE -->
             <img v-if="coverEndUrl" class="cover" :src="coverBaseUrl + coverEndUrl" :alt="originalTitle">
             <!-- IMAGE NULL -->
@@ -23,7 +23,8 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <div :class="'mt-1 fs-5 position-relative fi fi-' + originalLanguage">
+                    <div class="fs-5 position-relative">
+                        <span :class="'fi fi-' + originalLanguage"></span>
                         <img class="unknown-flag" src="/img/pride_flag.png" alt="Unknown Flag">
                     </div>
                 </div>
@@ -66,7 +67,7 @@
 
 <style lang="scss" scoped>
     .col-12{
-        .position-relative{
+        .card-box{
             transition: transform 0.5s ease-in-out;
             &:hover{
                 transform: scale(1.5);
@@ -78,7 +79,7 @@
             }
         }
         .cover{
-            width: 200px;
+            width: 210px;
         } 
         .info-box{
             position: absolute;
@@ -99,17 +100,23 @@
                 -webkit-text-fill-color: transparent;
                 color: transparent;
             }
-            .unknown-flag{
+            span {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 26px;
-                height: 20px;
+                z-index: 555;
+            }
+            .unknown-flag{
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                width: 24px;
+                height: 18px;
                 z-index: -1;
             }
         }
     }
-    @media only screen and (min-width: 576px) {
+    @media only screen and (min-width: 500px) {
         .cover {
             width: 300px!important;
         }

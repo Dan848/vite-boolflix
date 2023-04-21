@@ -20,8 +20,8 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
-                    <input v-model="store.search.query" @keyup.enter="$emit('onGetMovies')" type="text" name="searchBar" id="searchBar" placeholder="Film e Serie Tv">
-                    <button @click="$emit('onGetMovies')">Search</button>
+                    <input v-model="store.search.query" @keyup.enter="$emit('onGetSearch')" type="text" name="searchBar" id="searchBar" placeholder="Film e Serie Tv">
+                    <button @click="$emit('onGetSearch')">Search</button>
                 </div>
             </div>
         </div>
