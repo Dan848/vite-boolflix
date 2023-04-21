@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+            <h2 class="mt-5 mb-3 text-center display-2">Film</h2>
         <div v-if="store.loading === false" class="row">
             <CardUnit
             v-for="movie in store.movies.items" :key="movie.id"
@@ -13,6 +14,7 @@
                 @onChangeJumbotron="changeJumbotron(movie.backdrop_path)"
             />
         </div>
+            <h2 class="mt-5 mb-3 text-center display-2">Serie Tv</h2>
         <div v-if="store.loading === false" class="row">
             <CardUnit
             v-for="tv in store.tv.items" :key="tv.id"

@@ -1,6 +1,6 @@
 <template>
-    <div class="w100">
-    <img class="img-fluid" :src="store.jumbotronBaseUrl + store.jumbotronEndUrl" alt="">
+    <div class="w-100">
+    <img class="w-100" :src="store.jumbotronBaseUrl + store.jumbotronEndUrl" alt="">
     </div>
 </template>
 
@@ -17,5 +17,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>
