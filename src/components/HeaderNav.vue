@@ -20,8 +20,8 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
-                    <input v-model="store.search.query" @keyup.enter="$emit('onGetSearch')" type="text" name="searchBar" id="searchBar" placeholder="Film e Serie Tv">
-                    <button @click="$emit('onGetSearch')">Search</button>
+                    <input class="py-1 px-2 me-md-2" v-model="store.search.query" @keyup.enter="$emit('onGetSearch')" type="text" name="searchBar" id="searchBar" placeholder="Film e Serie Tv">
+                    <button class="py-1 px-2" @click="$emit('onGetSearch')">Search</button>
                 </div>
             </div>
         </div>
@@ -54,11 +54,11 @@
         position: absolute;
         background: transparent;
         transition: background-color 0.5s ease, position 0.5s ease;
-        z-index: 1000;
+        z-index: 888;
     }
 
     .make-fixed {
-        z-index: 1000;
+        z-index: 888;
         position: fixed !important;
         width: 100%;
         background: rgba(20, 20, 20, 0.5) !important;
@@ -74,5 +74,18 @@
             cursor: pointer;
             opacity: (0.7);
         }
+    }
+
+    input {
+        background-color: rgba(20, 20, 20, 0.5);
+        color: white;
+        border: 1px solid white;
+    }
+
+    button {
+        background-color: red;
+        color: black;
+        font-weight: 600;
+        border: 1px solid white;
     }
 </style>

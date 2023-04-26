@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-md-6  d-flex justify-content-center">
-        <div @click="$emit('onChangeJumbotron', coverEndUrl)" class="position-relative card-box" :id="id">
+        <div @click="onChangeJumbotron" class="position-relative card-box" :id="id">
             <!-- IMAGE -->
             <img v-if="coverEndUrl" class="cover" :src="coverBaseUrl + coverEndUrl" :alt="originalTitle">
             <!-- IMAGE NULL -->
@@ -31,10 +31,21 @@
             </div>
         </div>
     </div>
+
+    <ModalUnit v-show="modalShow"
+    :modalTitle="title"
+    :modalOriginalTitle="originalTitle"
+    :modalOriginalLanguage="originalLanguage"
+    :modalVote="vote"
+    :modalId="id"
+    :modalCoverEndUrl="coverEndUrl"
+    :modalCoverBaseUrl="coverBaseUrl"
+    :modalOverview="overview"
+    @toCloseModal="closeModal" />
 </template>
 
 <script>
-
+    import ModalUnit from './ModalUnit.vue';
     export default {
         name: "CardUnit",
         props: {
@@ -44,13 +55,22 @@
             vote: Number,
             id: Number,
             coverEndUrl: String,
-            coverBaseUrl: String
+            coverBaseUrl: String,
+            overview: String
+        },
+        components: {
+            ModalUnit
         },
         data() {
             return {
+                modalShow: false
             }
         },
         methods: {
+            onChangeJumbotron(coverEndUrl){
+                this.$emit("toChangeJumbotron", coverEndUrl);
+                this.modalShow = true;
+            },
             calcRating(vote) {
                 const yellowPercent = vote * 10;
                 const whitePercent = 100 - (vote * 10);
@@ -60,6 +80,9 @@
                 else {
                     return `linear-gradient(to right, red ${yellowPercent}%, red ${whitePercent}% 100%)`;
                 }
+            },
+            closeModal(){
+                this.modalShow = false
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container wrapper-list px-5">
             <h2 class="mt-5 mb-3 text-center display-2">Film</h2>
         <div v-if="store.loading === false" class="row">
             <CardUnit
@@ -11,7 +11,8 @@
                 :id="movie.id"
                 :coverEndUrl="movie.backdrop_path"
                 :coverBaseUrl="store.baseImgUrl"
-                @onChangeJumbotron="changeJumbotron(movie.backdrop_path)"
+                :overview="movie.overview"
+                @toChangeJumbotron="changeJumbotron(movie.backdrop_path)"
             />
         </div>
             <h2 class="mt-5 mb-3 text-center display-2">Serie Tv</h2>
@@ -25,6 +26,7 @@
                 :id="tv.id"
                 :coverEndUrl="tv.backdrop_path"
                 :coverBaseUrl="store.baseImgUrl"
+                :overview="tv.overview"
                 @onChangeJumbotron="changeJumbotron(tv.backdrop_path)"
             />
         </div>
@@ -54,5 +56,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .wrapper-list {
+        margin-top: 5rem;
+        margin-bottom: 100px;
+    }
 </style>

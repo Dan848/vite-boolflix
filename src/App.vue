@@ -2,9 +2,7 @@
   <HeaderNav @onGetSearch="getAllList" :isScrolled="scrolled"/>
   <main>
     <JumbotronUnit />
-    <div class="px-5 wrapper">
-      <CardList />
-    </div>
+    <CardList />
   </main>
 </template>
 
@@ -14,6 +12,7 @@
   import HeaderNav from './components/HeaderNav.vue';
   import JumbotronUnit from "./components/JumbotronUnit.vue";
   import CardList from "./components/CardList.vue";
+  import ModalUnit from "./components/ModalUnit.vue";
   import { createApp } from "vue";
 
   export default {
@@ -21,7 +20,8 @@
     components: {
     HeaderNav,
     JumbotronUnit,
-    CardList
+    CardList,
+    ModalUnit
     },
 
     data() {
@@ -84,10 +84,5 @@
 </script>
 
 <style lang="scss" scoped>
-
-  .wrapper {
-    margin-top: 5rem;
-    margin-bottom: 100px;
-  }
 
 </style>
